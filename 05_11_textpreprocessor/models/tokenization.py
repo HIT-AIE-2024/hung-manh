@@ -30,7 +30,10 @@ class Tokenize:
             The input text to be processed.
         """
         self.text = text
-
+        self.whitespaceTokenizer = WhitespaceTokenizer()
+        self.tokenizWordPunctTokenizerer = WordPunctTokenizer()
+        self.treebankWordTokenizer = TreebankWordTokenizer()
+        
     def whitespace_tokenizer(self) -> List[str]:
         """
         Tokenizes the text based on whitespace.
@@ -42,8 +45,7 @@ class Tokenize:
         List[str]
             A list of tokens separated by whitespace.
         """
-        tokenizer = WhitespaceTokenizer()
-        return tokenizer.tokenize(self.text)
+        return self.whitespaceTokenizer.tokenize(self.text)
 
     def word_punct_tokenizer(self) -> List[str]:
         """
@@ -56,8 +58,7 @@ class Tokenize:
         List[str]
             A list of tokens, with punctuation marks as separate tokens.
         """
-        tokenizer = WordPunctTokenizer()
-        return tokenizer.tokenize(self.text)
+        return self.tokenizWordPunctTokenizerer.tokenize(self.text)
 
     def treebank_word_tokenizer(self) -> List[str]:
         """
@@ -71,8 +72,7 @@ class Tokenize:
         List[str]
             A list of tokens based on Treebank tokenization rules.
         """
-        tokenizer = TreebankWordTokenizer()
-        return tokenizer.tokenize(self.text)
+        return self.treebankWordTokenizer.tokenize(self.text)
 
 if __name__ == "__main__":
     # Example usage
